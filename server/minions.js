@@ -28,7 +28,7 @@ minionsRouter.param('minionId', (req, res, next, id) => {
 
 
 
-minionsRouter.get('/minions', (req, res, next) => {
+minionsRouter.get('/', (req, res, next) => {
     // Return an array of all the minions
     const allMinions = getAllFromDatabase('minions');
     res.send(allMinions);

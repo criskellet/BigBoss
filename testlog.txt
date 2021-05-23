@@ -1,0 +1,424 @@
+
+> build-apis-boss-machine@1.0.0 test C:\MyProjects\project-4-boss-machine-start
+> cross-env PORT=8000 mocha --watch
+
+
+[?25l
+
+  /api/minions routes
+    GET /api/minions
+GET /api/minions 301 189 - 2.747 ms
+      1) returns an array
+GET /api/minions 301 189 - 0.556 ms
+      2) returns an array of all minions
+    GET /minions/:minionId
+GET /api/minions/1 200 225 - 6.920 ms
+      √ returns a single minion object
+GET /api/minions/1 200 225 - 0.877 ms
+      √ returns a full minion object
+GET /api/minions/1 200 225 - 0.553 ms
+      √ returned minion has the correct id
+GET /api/minions/notAnId 404 16 - 0.724 ms
+      √ called with a non-numeric ID returns a 404 error
+GET /api/minions/450 404 16 - 0.673 ms
+      √ called with an invalid ID returns a 404 error
+    PUT /api/minions/:minionId
+GET /api/minions/1 200 225 - 0.580 ms
+PUT /api/minions/1 200 219 - 0.560 ms
+      √ updates the correct minion and returns it (156ms)
+GET /api/minions/1 200 219 - 0.592 ms
+PUT /api/minions/1 200 231 - 0.354 ms
+GET /api/minions/1 200 231 - 0.569 ms
+      √ updates the correct minion and persists to the database
+PUT /api/minions/notAnId 404 16 - 0.311 ms
+      √ called with a non-numeric ID returns a 404 error
+PUT /api/minions/450 404 16 - 0.299 ms
+      √ called with an invalid ID returns a 404 error
+GET /api/minions 301 189 - 0.496 ms
+PUT /api/minions/notAnId 404 16 - 0.297 ms
+GET /api/minions 301 189 - 0.435 ms
+      √ called with an invalid ID does not change the database array
+    POST /api/minions
+GET /api/minions 301 189 - 0.448 ms
+POST /api/minions 400 26 - 0.357 ms
+      3) should add a new minion if all supplied information is correct
+    DELETE /api/minions
+GET /api/minions 301 189 - 0.412 ms
+DELETE /api/minions/1 500 10636 - 2.258 ms
+      4) deletes the correct minion by id
+DELETE /api/minions/notAnId 404 16 - 0.304 ms
+      √ called with a non-numeric ID returns a 404 error
+DELETE /api/minions/450 404 16 - 0.306 ms
+      √ called with an invalid ID returns a 404 error
+
+  /api/ideas routes
+    GET /api/ideas
+GET /api/ideas 301 185 - 0.534 ms
+      5) returns an array
+GET /api/ideas 301 185 - 0.410 ms
+      6) returns an array of all ideas
+    GET /ideas/:ideaId
+GET /api/ideas/1 500 2192 - 1.358 ms
+GET /api/ideas/1 500 2192 - 1.358 ms
+      7) returns a single idea object
+GET /api/ideas/1 500 2192 - 0.687 ms
+GET /api/ideas/1 500 2192 - 0.687 ms
+      8) returns a full idea object with correct properties
+GET /api/ideas/1 500 2192 - 1.079 ms
+GET /api/ideas/1 500 2192 - 1.079 ms
+      9) returned idea has the correct id
+GET /api/ideas/notAnId 500 2192 - 0.541 ms
+GET /api/ideas/notAnId 500 2192 - 0.541 ms
+      10) called with a non-numeric ID returns a 404 error
+GET /api/ideas/450 500 2192 - 0.962 ms
+GET /api/ideas/450 500 2192 - 0.962 ms
+      11) called with an invalid ID returns a 404 error
+    PUT /api/ideas/:ideaId
+GET /api/ideas/1 500 2192 - 0.536 ms
+GET /api/ideas/1 500 2192 - 0.536 ms
+PUT /api/ideas/1 404 150 - 0.313 ms
+PUT /api/ideas/1 404 150 - 0.313 ms
+      12) updates the correct idea and returns it
+GET /api/ideas/1 500 2192 - 0.541 ms
+GET /api/ideas/1 500 2192 - 0.541 ms
+PUT /api/ideas/1 404 150 - 0.204 ms
+PUT /api/ideas/1 404 150 - 0.204 ms
+GET /api/ideas/1 500 2192 - 0.554 ms
+GET /api/ideas/1 500 2192 - 0.554 ms
+      13) updates the correct idea and persists to the database
+PUT /api/ideas/notAnId 404 156 - 0.367 ms
+PUT /api/ideas/notAnId 404 156 - 0.367 ms
+      √ called with a non-numeric ID returns a 404 error
+PUT /api/ideas/450 404 152 - 0.356 ms
+PUT /api/ideas/450 404 152 - 0.356 ms
+      √ called with an invalid ID returns a 404 error
+GET /api/ideas 301 185 - 0.430 ms
+PUT /api/ideas/notAnId 404 156 - 0.217 ms
+PUT /api/ideas/notAnId 404 156 - 0.217 ms
+GET /api/ideas 301 185 - 0.404 ms
+      √ called with an invalid ID does not change the database array
+    POST /api/ideas
+GET /api/ideas 301 185 - 0.416 ms
+POST /api/ideas 400 24 - 0.338 ms
+POST /api/ideas 400 24 - 0.338 ms
+      14) should add a new idea if all supplied information is correct
+    DELETE /api/ideas
+GET /api/ideas 301 185 - 0.536 ms
+DELETE /api/ideas/1 404 153 - 0.356 ms
+DELETE /api/ideas/1 404 153 - 0.356 ms
+      15) deletes the correct minion by id
+DELETE /api/ideas/notAnId 404 159 - 0.361 ms
+DELETE /api/ideas/notAnId 404 159 - 0.361 ms
+      √ called with a non-numeric ID returns a 404 error
+DELETE /api/ideas/450 404 155 - 0.354 ms
+DELETE /api/ideas/450 404 155 - 0.354 ms
+      √ called with an invalid ID returns a 404 error
+
+  checkMillionDollarIdea middleware
+    16) is a function takes three arguments
+    17) sends a 400 error if the total yield is less than one million dollars
+    18) calls next for ideas that will yield at least one million dollars
+    19) sends a 400 error if numWeeks or weeklyRevenue is not supplied
+    20) sends a 400 error if numWeeks or weeklyRevenue is an invalid string
+POST /api/ideas 400 24 - 0.212 ms
+POST /api/ideas 400 24 - 0.212 ms
+    √ is used in a POST /api/ideas route to reject insufficiently profitable ideas
+
+  /api/meetings routes
+    GET /api/meetings
+GET /api/meetings 301 191 - 0.424 ms
+      21) returns an array
+GET /api/meetings 301 191 - 0.437 ms
+      22) returns an array of all meetings
+    POST /api/meetings
+POST /api/meetings 201 135 - 1.094 ms
+POST /api/meetings 201 135 - 1.094 ms
+      √ should create a new meetings and return it
+GET /api/meetings 301 191 - 0.412 ms
+POST /api/meetings 201 131 - 0.710 ms
+POST /api/meetings 201 131 - 0.710 ms
+GET /api/meetings 301 191 - 0.372 ms
+      23) should persist the created meeting to the database
+    DELETE /api/meetings route
+GET /api/meetings 301 191 - 0.375 ms
+DELETE /api/meetings 204 - - 0.339 ms
+DELETE /api/meetings 204 - - 0.339 ms
+GET /api/meetings 301 191 - 0.440 ms
+      24) deletes all meetings
+
+  BONUS: /api/minions/:minionId/work routes
+    GET /api/minions/:minionId/work
+      - returns an array
+      - returns an array of all all work for the specified minion
+      - called with a non-numeric minion ID returns a 404 error
+      - called with an invalid ID minion returns a 404 error
+    PUT /api/minions/:minionId/work/:workId
+      - updates the correct work and returns it
+      - updates the correct work item and persists to the database
+      - called with a non-numeric minion ID returns a 404 error
+      - called with an invalid minion ID returns a 404 error
+      - called with a non-numeric work ID returns a 404 error
+      - called with an invalid work ID returns a 404 error
+      - called with an invalid ID does not change the database array
+      - returns a 400 if a work ID with the wrong :minionId is requested
+    POST /api/minions/:minionId/work
+      - should add a new work item if all supplied information is correct
+    DELETE /api/minions/:minionId/work/:workId
+      - deletes the correct work by id
+      - called with a non-numeric minion ID returns a 404 error
+      - called with an invalid minion ID returns a 404 error
+      - called with a non-numeric work ID returns a 404 error
+      - called with an invalid work ID returns a 404 error
+
+
+  19 passing (526ms)
+  18 pending
+  24 failing
+
+  1) /api/minions routes
+       GET /api/minions
+         returns an array:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  2) /api/minions routes
+       GET /api/minions
+         returns an array of all minions:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  3) /api/minions routes
+       POST /api/minions
+         should add a new minion if all supplied information is correct:
+     Error: expected 201 "Created", got 400 "Bad Request"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  4) /api/minions routes
+       DELETE /api/minions
+         deletes the correct minion by id:
+     Error: expected 204 "No Content", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  5) /api/ideas routes
+       GET /api/ideas
+         returns an array:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  6) /api/ideas routes
+       GET /api/ideas
+         returns an array of all ideas:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  7) /api/ideas routes
+       GET /ideas/:ideaId
+         returns a single idea object:
+     Error: expected 200 "OK", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  8) /api/ideas routes
+       GET /ideas/:ideaId
+         returns a full idea object with correct properties:
+     Error: expected 200 "OK", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  9) /api/ideas routes
+       GET /ideas/:ideaId
+         returned idea has the correct id:
+     Error: expected 200 "OK", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  10) /api/ideas routes
+       GET /ideas/:ideaId
+         called with a non-numeric ID returns a 404 error:
+     Error: expected 404 "Not Found", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  11) /api/ideas routes
+       GET /ideas/:ideaId
+         called with an invalid ID returns a 404 error:
+     Error: expected 404 "Not Found", got 500 "Internal Server Error"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  12) /api/ideas routes
+       PUT /api/ideas/:ideaId
+         updates the correct idea and returns it:
+
+      AssertionError: expected {} to deeply equal { name: 'Test' }
+      + expected - actual
+
+      -{}
+      +{
+      +  "name": "Test"
+      +}
+      
+      at C:\MyProjects\project-4-boss-machine-start\test\test.js:344:44
+      at processTicksAndRejections (internal/process/task_queues.js:95:5)
+
+  13) /api/ideas routes
+       PUT /api/ideas/:ideaId
+         updates the correct idea and persists to the database:
+     AssertionError: expected undefined to equal 'Persistence Test'
+      at C:\MyProjects\project-4-boss-machine-start\test\test.js:368:44
+      at processTicksAndRejections (internal/process/task_queues.js:95:5)
+
+  14) /api/ideas routes
+       POST /api/ideas
+         should add a new idea if all supplied information is correct:
+     Error: expected 201 "Created", got 400 "Bad Request"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  15) /api/ideas routes
+       DELETE /api/ideas
+         deletes the correct minion by id:
+     Error: expected 204 "No Content", got 404 "Not Found"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  16) checkMillionDollarIdea middleware
+       is a function takes three arguments:
+
+      AssertionError: expected 0 to equal 3
+      + expected - actual
+
+      -0
+      +3
+      
+      at Context.<anonymous> (test\test.js:519:46)
+      at processImmediate (internal/timers.js:462:21)
+
+  17) checkMillionDollarIdea middleware
+       sends a 400 error if the total yield is less than one million dollars:
+     AssertionError: expected null to equal 400
+      at Context.<anonymous> (test\test.js:529:23)
+      at processImmediate (internal/timers.js:462:21)
+
+  18) checkMillionDollarIdea middleware
+       calls next for ideas that will yield at least one million dollars:
+
+      AssertionError: expected false to be true
+      + expected - actual
+
+      -false
+      +true
+      
+      at Context.<anonymous> (test\test.js:538:29)
+      at processImmediate (internal/timers.js:462:21)
+
+  19) checkMillionDollarIdea middleware
+       sends a 400 error if numWeeks or weeklyRevenue is not supplied:
+     AssertionError: expected null to equal 400
+      at Context.<anonymous> (test\test.js:543:23)
+      at processImmediate (internal/timers.js:462:21)
+
+  20) checkMillionDollarIdea middleware
+       sends a 400 error if numWeeks or weeklyRevenue is an invalid string:
+     AssertionError: expected null to equal 400
+      at Context.<anonymous> (test\test.js:554:23)
+      at processImmediate (internal/timers.js:462:21)
+
+  21) /api/meetings routes
+       GET /api/meetings
+         returns an array:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  22) /api/meetings routes
+       GET /api/meetings
+         returns an array of all meetings:
+     Error: expected 200 "OK", got 301 "Moved Permanently"
+      at Test._assertStatus (node_modules\supertest\lib\test.js:268:12)
+      at Test._assertFunction (node_modules\supertest\lib\test.js:283:11)
+      at Test.assert (node_modules\supertest\lib\test.js:173:18)
+      at Server.localAssert (node_modules\supertest\lib\test.js:131:12)
+      at emitCloseNT (net.js:1659:8)
+      at processTicksAndRejections (internal/process/task_queues.js:81:21)
+
+  23) /api/meetings routes
+       POST /api/meetings
+         should persist the created meeting to the database:
+     AssertionError: expected undefined to equal NaN
+      at C:\MyProjects\project-4-boss-machine-start\test\test.js:649:46
+      at processTicksAndRejections (internal/process/task_queues.js:95:5)
+
+  24) /api/meetings routes
+       DELETE /api/meetings route
+         deletes all meetings:
+     AssertionError: expected {} to be an instance of Array
+      at C:\MyProjects\project-4-boss-machine-start\test\test.js:679:50
+      at processTicksAndRejections (internal/process/task_queues.js:95:5)
+
+
+
+[?25h
+

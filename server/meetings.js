@@ -18,7 +18,7 @@ const { getAllFromDatabase,
 
  meetingsRouter.get('/', (req, res, next) => {
     // Return all the meetings in the database
-    const allMeetings = db.getAllFromDatabase('meetings');
+    const allMeetings = getAllFromDatabase('meetings');
     res.send(allMeetings);
 
 });
