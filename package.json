@@ -38,6 +38,6 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.7.0",
     "redux-thunk": "^2.2.0",
-    "webpack": "^5.37.0"
+    "webpack": "^5.37.1"
   }
 }
