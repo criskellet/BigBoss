@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-app.use(express.static('public'));
+
+// This is the directory that contains the index.html file
+app.use(express.static(__dirname + '/'));
 module.exports = app;
 
 /* Do not change the following line! It is required for testing and allowing

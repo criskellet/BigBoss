@@ -1,6 +1,8 @@
 const express = require('express');
 const apiRouter = express.Router();
-apiRouter.use(express.static('public'));
+
+// This is the directory which contains the index.html file
+apiRouter.use(express.static(__dirname + '/'));
 
 const morgan = require('morgan');
 apiRouter.use(morgan('tiny'));
