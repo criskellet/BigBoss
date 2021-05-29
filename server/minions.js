@@ -20,7 +20,7 @@ minionsRouter.param('minionId', (req, res, next, id) => {
     if (!minion) {
         res.status(404).send('Minion not found');
     } else {
-        // store the minion index in the request object and call next 
+        // store the minion in the request object and call next 
         req.minion = minion;
         next();
     }
@@ -72,5 +72,67 @@ minionsRouter.delete('/:minionId', (req, res, next) => {
     }
 });
 
+
+// Minion work routes
+
+
+// Get the all the work for the given minion
+minionsRouter.get('/:minionId/work', (req, res, next) => {
+    // get the work array for the specified minion
+    let allWork = getAllFromDatabase('work');
+    // filter out the work for the specified minion
+    let minionWork = allWork.filter((work) => {
+        return work.minionId === req.params.minionId;
+        });
+        
+    res.send(minionWork);
+
+});
+
+// add work to existing work for the given minion
+minionsRouter.post('/:minionId/work', (req, res, next) => {
+    // add work to minions exiting work load
+    let workToAdd = req.body;
+    workToAdd.minionId = req.params.minionId;
+    const newWork = addToDatabase('work', workToAdd);
+    res.status(201).send(newWork);
+    
+});
+
+// Extract the work id
+minionsRouter.param('workId', (req, res, next, id) => {
+    const work = getFromDatabaseById('work', id);
+    // If work id given is not found in the minions array
+    if (!work) {
+        res.status(404).send('Work not found');
+    } else {
+        // store the work in the request object and call next 
+        req.work = work;
+        next();
+    }
+});
+
+
+// Update given work entry for specified minion
+minionsRouter.put('/:minionId/work/:workId', (req, res, next) => {
+    if (req.params.minionId !== req.body.minionId) {
+        res.status(400).send();
+    }
+    else {
+        let updatedWorkInstance = updateInstanceInDatabase('work', req.body);
+        res.send(updatedWorkInstance);
+    }
+});
+
+// delete selected work item from minions work load
+minionsRouter.delete('/:minionId/work/:workId', (req, res, next) => {
+    const deletedWork = deleteFromDatabasebyId('work', req.params.workId);
+    if (deletedWork) {
+        res.status(204).send();
+    } else {
+        res.status(500).send();;
+    }
+
+});
 
 module.exports = minionsRouter;

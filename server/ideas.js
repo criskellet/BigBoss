@@ -43,7 +43,8 @@ ideasRouter.post('/', (req, res, next) => {
     const idea = req.body;
     // Check that the idea has a name, a description, number of weeks and weekly revenue
     // Create a validateIdea() to check that all info is present and return relevent error message
-    if (!idea.name || !idea.description || !idea.numWeeks || idea.weeklyRevenue) {
+    if (!idea.name || !idea.description || !idea.numWeeks) {
+        console.log('Idea information missing');
         res.status(400).send('Idea information missing');
     } else {
         // add new idea to the database
